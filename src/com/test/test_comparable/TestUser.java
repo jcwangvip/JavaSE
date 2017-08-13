@@ -27,6 +27,13 @@ public class TestUser {
         	System.out.println(o.getName() + "-->" + o.getAge());
         }
         
+        System.out.println("--------------------------");
+        f1.bubbleSort();
+        System.out.println();
+        System.out.println("--------------------------");
+        f1.bubbleSort1();
+        
+        
         
 	        
 	}
