@@ -35,6 +35,7 @@ public class ThreadDemo implements Runnable {
                 synchronized (flag) {
                     log.warn(Thread.currentThread().getName() + "-->flag.notifyAll()");
                     flag.notifyAll();
+//                    log.warn(Thread.currentThread().getName() + "-->flag.notify()");
 //                    flag.notify();
                 }
             }
@@ -47,13 +48,15 @@ public class ThreadDemo implements Runnable {
     public void run() {
         synchronized (flag) {
             try {
-                String name = Thread.currentThread().getName();
-                log.warn(name + "-->After flag.wait()");
+                Thread thread = Thread.currentThread();
+                String name = thread.getName();
+                log.warn(name + "-->before flag.wait(),state=" + thread.getState());
                 flag.wait();
-                log.warn(name + "-->After flag.wait()");
+                log.warn(name + "-->after flag.wait(),state=" + thread.getState());
 //                Thread.sleep(1000L);
-                flag.wait();
-                log.warn(name + "-->After Thread.sleep()");
+//                flag.wait();
+//                log.warn(name + "-->After Thread.sleep()");
+                log.warn(name + "-->end");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
